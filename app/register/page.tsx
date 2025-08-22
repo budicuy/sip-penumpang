@@ -4,7 +4,6 @@ import { IconUserPlus } from '@tabler/icons-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import axios, { AxiosError } from 'axios';
 import { toast } from 'react-hot-toast';
 
 export default function RegisterPage() {
@@ -18,20 +17,29 @@ export default function RegisterPage() {
         e.preventDefault();
         setLoading(true);
 
-        const promise = axios.post('/api/auth/register', { name, email, password })
-            .then(() => {
+        const promise = fetch('/api/auth/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name, email, password }),
+        })
+            .then(async (response) => {
+                if (!response.ok) {
+                    const data = await response.json();
+                    throw new Error(data.error || 'Pendaftaran gagal');
+                }
                 router.push('/login');
                 return 'Pendaftaran berhasil! Anda akan diarahkan ke halaman login.';
             })
-            .catch((error) => {
-                const axiosError = error as AxiosError<{ error: string }>;
-                throw new Error(axiosError.response?.data?.error || 'Pendaftaran gagal');
+            .catch((error: Error) => {
+                throw new Error(error.message || 'Pendaftaran gagal');
             });
 
         toast.promise(promise, {
             loading: 'Mendaftarkan akun...',
-            success: (message) => <b>{message}</b>,
-            error: (err) => <b>{err.message}</b>,
+            success: (message: string) => <b>{message}</b>,
+            error: (err: Error) => <b>{err.message}</b>,
         }).finally(() => setLoading(false));
     };
 

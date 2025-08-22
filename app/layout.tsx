@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={process.env.THEME === "dark" ? "dark" : ""}>
+    <html lang="en">
       <body
         className={`${poppins.variable} ${quicksand.variable} antialiased`}
       >

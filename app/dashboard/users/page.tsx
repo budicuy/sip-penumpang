@@ -60,12 +60,12 @@ const MobileActions = ({ user, onEdit, onDelete }: {
     <div className="relative" ref={menuRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-colors"
+        className="p-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
       >
         <IconDotsVertical className="w-5 h-5" />
       </button>
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-10 border border-gray-200">
+        <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 rounded-md shadow-lg z-10 border border-gray-200 dark:border-gray-700">
           <ul className="py-1">
             <li>
               <button
@@ -73,7 +73,7 @@ const MobileActions = ({ user, onEdit, onDelete }: {
                   onEdit(user);
                   setIsOpen(false);
                 }}
-                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center"
+                className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center"
               >
                 <IconEdit className="w-4 h-4 mr-3" />
                 Edit
@@ -85,7 +85,7 @@ const MobileActions = ({ user, onEdit, onDelete }: {
                   onDelete(user.id, user.name);
                   setIsOpen(false);
                 }}
-                className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center"
+                className="w-full text-left px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/50 flex items-center"
               >
                 <IconTrash className="w-4 h-4 mr-3" />
                 Hapus
@@ -109,14 +109,14 @@ const UserModal = ({ isOpen, onClose, onSubmit, user, isSubmitting }: {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white p-6 rounded-xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl font-bold text-gray-800">
+          <h2 className="text-xl font-bold text-gray-800 dark:text-white">
             {user ? 'Edit Pengguna' : 'Tambah Pengguna'}
           </h2>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors p-1"
+            className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors p-1"
             disabled={isSubmitting}
           >
             <IconX className="w-5 h-5" />
@@ -124,48 +124,48 @@ const UserModal = ({ isOpen, onClose, onSubmit, user, isSubmitting }: {
         </div>
         <form onSubmit={onSubmit} className="space-y-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Nama</label>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nama</label>
             <input
               type="text"
               id="name"
               name="name"
               defaultValue={user?.name}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               required
               disabled={isSubmitting}
             />
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
             <input
               type="email"
               id="email"
               name="email"
               defaultValue={user?.email}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               required
               disabled={isSubmitting}
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-              Password {user && <span className="text-gray-500 text-xs">(kosongkan jika tidak ingin mengubah)</span>}
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              Password {user && <span className="text-gray-500 dark:text-gray-400 text-xs">(kosongkan jika tidak ingin mengubah)</span>}
             </label>
             <input
               type="password"
               id="password"
               name="password"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               disabled={isSubmitting}
             />
           </div>
           <div>
-            <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-1">Role</label>
+            <label htmlFor="role" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Role</label>
             <select
               id="role"
               name="role"
               defaultValue={user?.role || 'USER'}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               required
               disabled={isSubmitting}
             >
@@ -178,7 +178,7 @@ const UserModal = ({ isOpen, onClose, onSubmit, user, isSubmitting }: {
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+              className="px-4 py-2 text-gray-700 bg-gray-100 dark:bg-gray-600 dark:text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-500 transition-colors"
               disabled={isSubmitting}
             >
               Batal
@@ -217,19 +217,19 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: {
   };
 
   return (
-    <div className="flex items-center justify-between px-4 py-3 sm:px-6">
+    <div className="flex items-center justify-between px-4 py-3 sm:px-6 border-t border-gray-200 dark:border-gray-700">
       <div className="flex-1 flex justify-between sm:hidden">
-        <button onClick={handlePrevious} disabled={currentPage === 1} className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50">
+        <button onClick={handlePrevious} disabled={currentPage === 1} className="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50">
           Previous
         </button>
-        <button onClick={handleNext} disabled={currentPage === totalPages} className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50">
+        <button onClick={handleNext} disabled={currentPage === totalPages} className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50">
           Next
         </button>
       </div>
       <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm text-gray-700">
-            Halaman <span className="font-medium">{currentPage}</span> dari <span className="font-medium">{totalPages}</span>
+          <p className="text-sm text-gray-700 dark:text-gray-400">
+            Halaman <span className="font-medium dark:text-white">{currentPage}</span> dari <span className="font-medium dark:text-white">{totalPages}</span>
           </p>
         </div>
         <div>
@@ -237,7 +237,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: {
             <button
               onClick={handlePrevious}
               disabled={currentPage === 1}
-              className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50"
+              className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50"
             >
               <span className="sr-only">Previous</span>
               <IconChevronLeft className="h-5 w-5" aria-hidden="true" />
@@ -245,7 +245,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: {
             <button
               onClick={handleNext}
               disabled={currentPage === totalPages}
-              className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50"
+              className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50"
             >
               <span className="sr-only">Next</span>
               <IconChevronRight className="h-5 w-5" aria-hidden="true" />
@@ -393,7 +393,7 @@ export default function UsersPage() {
   return (
     <div className="mx-auto">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
-        <h1 className="text-2xl lg:text-3xl font-bold text-gray-800 flex items-center">
+        <h1 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white flex items-center">
           <IconUsers className="w-7 h-7 mr-3 text-blue-600" />
           Manajemen Pengguna
         </h1>
@@ -408,10 +408,10 @@ export default function UsersPage() {
         )}
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200">
-        <div className="p-4 border-b border-gray-200">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+        <div className="p-4 border-b border-gray-200 dark:border-gray-700">
           <div className="relative">
-            <IconSearch className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <IconSearch className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500" />
             <input
               type="text"
               placeholder="Cari berdasarkan nama, email, atau role..."
@@ -420,34 +420,34 @@ export default function UsersPage() {
                 setSearchTerm(e.target.value);
                 setCurrentPage(1); // Reset to first page on search
               }}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             />
           </div>
         </div>
 
         {/* Desktop Table View */}
         <div className="hidden md:block overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <thead className="bg-gray-50 dark:bg-gray-700/50">
               <tr>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Nama</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Email</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Role</th>
-                {canPerformActions && <th className="px-6 py-4 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider">Aksi</th>}
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">Nama</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">Email</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">Role</th>
+                {canPerformActions && <th className="px-6 py-4 text-right text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">Aksi</th>}
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
               {isLoading ? (
                 <tr><td colSpan={canPerformActions ? 4 : 3} className="py-12">{renderLoading()}</td></tr>
               ) : users.length === 0 ? (
                 <tr><td colSpan={canPerformActions ? 4 : 3} className="py-12">{renderEmpty()}</td></tr>
               ) : (
                 users.map((user) => (
-                  <tr key={user.id} className="hover:bg-gray-50 transition-colors">
+                  <tr key={user.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="font-medium text-gray-900">{user.name}</div>
+                      <div className="font-medium text-gray-900 dark:text-white">{user.name}</div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-600">{user.email}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">{user.email}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${getRoleBadgeColor(user.role)}`}>
                         {user.role}
@@ -458,14 +458,14 @@ export default function UsersPage() {
                         <div className="flex items-center justify-end space-x-2">
                           <button
                             onClick={() => handleModalOpen(user)}
-                            className="p-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition-all"
+                            className="p-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 dark:hover:bg-gray-700 rounded-lg transition-all"
                             title="Edit pengguna"
                           >
                             <IconEdit className="w-4 h-4" />
                           </button>
                           <button
                             onClick={() => handleDelete(user.id, user.name)}
-                            className="p-2 text-red-600 hover:text-red-800 hover:bg-red-50 rounded-lg transition-all"
+                            className="p-2 text-red-600 hover:text-red-800 hover:bg-red-50 dark:hover:bg-gray-700 rounded-lg transition-all"
                             title="Hapus pengguna"
                           >
                             <IconTrash className="w-4 h-4" />
@@ -483,13 +483,13 @@ export default function UsersPage() {
         {/* Mobile Card View */}
         <div className="md:hidden">
           {isLoading ? renderLoading() : users.length === 0 ? renderEmpty() : (
-            <div className="divide-y divide-gray-200">
+            <div className="divide-y divide-gray-200 dark:divide-gray-700">
               {users.map((user) => (
                 <div key={user.id} className="p-4">
                   <div className="flex justify-between items-start">
                     <div className="space-y-1.5">
-                      <p className="font-semibold text-gray-800">{user.name}</p>
-                      <p className="text-sm text-gray-500">{user.email}</p>
+                      <p className="font-semibold text-gray-800 dark:text-white">{user.name}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">{user.email}</p>
                       <div>
                         <span className={`px-2 py-0.5 inline-flex text-xs leading-5 font-semibold rounded-full ${getRoleBadgeColor(user.role)}`}>
                           {user.role}

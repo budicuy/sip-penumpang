@@ -151,7 +151,7 @@ export const PenumpangModal = memo(
                   id="jenisKelamin"
                   name="jenisKelamin"
                   defaultValue={selectedPenumpang?.jenisKelamin || "L"}
-                  className="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   required
                 >
                   <option value="L">Laki-laki</option>
@@ -163,7 +163,7 @@ export const PenumpangModal = memo(
                   id="tujuan"
                   name="tujuan"
                   defaultValue={selectedPenumpang?.tujuan || TUJUAN_OPTIONS[0]}
-                  className="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   required
                 >
                   {TUJUAN_OPTIONS.map((opt) => (
@@ -217,7 +217,7 @@ export const PenumpangModal = memo(
                   id="golongan"
                   name="golongan"
                   defaultValue={selectedPenumpang?.golongan || GOLONGAN_OPTIONS[0]}
-                  className="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   required
                 >
                   {GOLONGAN_OPTIONS.map((opt) => (
@@ -232,7 +232,7 @@ export const PenumpangModal = memo(
                   id="kapal"
                   name="kapal"
                   defaultValue={selectedPenumpang?.kapal || KAPAL_OPTIONS[0]}
-                  className="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   required
                 >
                   {KAPAL_OPTIONS.map((opt) => (
