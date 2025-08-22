@@ -254,14 +254,14 @@ export default function PenumpangPage() {
 
     return (
         <div>
-            <h1 className="text-2xl lg:text-4xl font-bold text-black mb-5">
+            <h1 className="text-2xl lg:text-4xl font-bold text-black dark:text-white mb-5">
                 Manifest Data Penumpang
             </h1>
 
             {fetchError && toast.error(`Gagal memuat data: ${fetchError}`)}
 
-            <div className="bg-white p-6 rounded-lg shadow mb-6">
-                <h2 className="text-xl font-semibold text-gray-800 mb-4">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow mb-6">
+                <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
                     Manifest Data Penumpang ({totalData} data)
                 </h2>
 
@@ -273,12 +273,12 @@ export default function PenumpangPage() {
                     onDeleteSelected={handleDeleteSelected}
                 />
 
-                <div className="mb-4 flex items-center space-x-2 border border-gray-300 rounded-lg px-3 relative">
-                    <IconSearch className="w-5 h-5 text-gray-500" />
+                <div className="mb-4 flex items-center space-x-2 border border-gray-300 dark:border-gray-600 rounded-lg px-3 relative bg-white dark:bg-gray-700">
+                    <IconSearch className="w-5 h-5 text-gray-500 dark:text-gray-400" />
                     <input
                         type="text"
                         placeholder="Cari nama, tujuan, nopol, atau kapal..."
-                        className="w-full px-3 py-2 rounded focus:outline-none"
+                        className="w-full px-3 py-2 rounded focus:outline-none bg-transparent"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         maxLength={100}
@@ -291,7 +291,7 @@ export default function PenumpangPage() {
                     {searchTerm && (
                         <button
                             onClick={() => setSearchTerm("")}
-                            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                            className="absolute right-10 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
                             title="Hapus pencarian"
                         >
                             <IconX className="w-4 h-4" />
@@ -303,7 +303,7 @@ export default function PenumpangPage() {
                     <div>
                         <label
                             htmlFor="filterStartDate"
-                            className="block text-gray-700 mb-1"
+                            className="block text-gray-700 dark:text-gray-300 mb-1"
                         >
                             Dari Tanggal
                         </label>
@@ -311,7 +311,7 @@ export default function PenumpangPage() {
                             type="date"
                             placeholder="Pilih tanggal mulai"
                             id="filterStartDate"
-                            className="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
                             value={filterStartDate}
                             onChange={(e) => setFilterStartDate(e.target.value)}
                         />
@@ -319,7 +319,7 @@ export default function PenumpangPage() {
                     <div>
                         <label
                             htmlFor="filterEndDate"
-                            className="block text-gray-700 mb-1"
+                            className="block text-gray-700 dark:text-gray-300 mb-1"
                         >
                             Sampai Tanggal
                         </label>
@@ -327,20 +327,20 @@ export default function PenumpangPage() {
                             type="date"
                             placeholder="Pilih tanggal akhir"
                             id="filterEndDate"
-                            className="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
                             value={filterEndDate}
                             onChange={(e) => setFilterEndDate(e.target.value)}
                         />
                     </div>
                     <div>
-                        <label htmlFor="itemsPerPage" className="block text-gray-700 mb-1">
+                        <label htmlFor="itemsPerPage" className="block text-gray-700 dark:text-gray-300 mb-1">
                             Data per Halaman
                         </label>
                         <select
                             id="itemsPerPage"
                             value={itemsPerPage}
                             onChange={(e) => setItemsPerPage(Number(e.target.value))}
-                            className="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
                         >
                             {ITEMS_PER_PAGE_OPTIONS.map((opt) => (
                                 <option key={opt} value={opt}>
@@ -352,7 +352,7 @@ export default function PenumpangPage() {
                     <div className="flex items-end">
                         <button
                             onClick={handleResetFilters}
-                            className="w-full bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+                            className="w-full bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-500"
                         >
                             Reset Filter
                         </button>
@@ -360,23 +360,23 @@ export default function PenumpangPage() {
                 </div>
 
                 <div className="mb-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-gray-600 dark:text-gray-400">
                         <div>
                             Menampilkan {penumpang.length} dari {totalData} data
                             {selectedCount > 0 && (
-                                <span className="ml-2 text-blue-600 font-medium">
+                                <span className="ml-2 text-blue-600 dark:text-blue-400 font-medium">
                                     • {selectedCount} dipilih
                                 </span>
                             )}
                         </div>
                         {(searchTerm || filterStartDate || filterEndDate) && (
-                            <div className="text-xs text-gray-500 mt-1">
+                            <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
                                 {searchTerm && `Pencarian: "${searchTerm}"`}
                                 {filterStartDate && ` | Dari: ${filterStartDate}`}
                                 {filterEndDate && ` | Sampai: ${filterEndDate}`}
                             </div>
                         )}
-                        <div className="text-xs text-gray-500 mt-1">
+                        <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
                             Tip: Klik baris untuk memilih/batal memilih data
                         </div>
                     </div>
@@ -384,14 +384,14 @@ export default function PenumpangPage() {
                         <button
                             onClick={() => setCurrentPage(1)}
                             disabled={currentPage === 1}
-                            className="px-3 py-1 border rounded disabled:opacity-50 hover:bg-gray-100 transition-colors"
+                            className="px-3 py-1 border rounded disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-gray-700 dark:border-gray-600 transition-colors"
                         >
                             «
                         </button>
                         <button
                             onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
                             disabled={currentPage === 1}
-                            className="px-3 py-1 border rounded disabled:opacity-50 hover:bg-gray-100 transition-colors"
+                            className="px-3 py-1 border rounded disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-gray-700 dark:border-gray-600 transition-colors"
                         >
                             ‹
                         </button>
@@ -402,24 +402,24 @@ export default function PenumpangPage() {
                                 const page = parseInt(e.target.value) || 1;
                                 setCurrentPage(Math.max(1, Math.min(page, totalPages)));
                             }}
-                            className="w-16 px-2 py-1 border rounded text-center focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className="w-16 px-2 py-1 border rounded text-center focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
                             min="1"
                             max={totalPages}
                         />
-                        <span className="px-2">/ {totalPages}</span>
+                        <span className="px-2 dark:text-gray-400">/ {totalPages}</span>
                         <button
                             onClick={() =>
                                 setCurrentPage((prev) => Math.min(totalPages, prev + 1))
                             }
                             disabled={currentPage === totalPages}
-                            className="px-3 py-1 border rounded disabled:opacity-50 hover:bg-gray-100 transition-colors"
+                            className="px-3 py-1 border rounded disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-gray-700 dark:border-gray-600 transition-colors"
                         >
                             ›
                         </button>
                         <button
                             onClick={() => setCurrentPage(totalPages)}
                             disabled={currentPage === totalPages}
-                            className="px-3 py-1 border rounded disabled:opacity-50 hover:bg-gray-100 transition-colors"
+                            className="px-3 py-1 border rounded disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-gray-700 dark:border-gray-600 transition-colors"
                         >
                             »
                         </button>

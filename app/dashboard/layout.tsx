@@ -36,7 +36,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       {/* Main content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="bg-white drop-shadow p-4 flex items-center justify-between">
+        <header className="bg-white dark:bg-gray-800 drop-shadow p-4 flex items-center justify-between">
           <div className="flex items-center">
             <button className="text-gray-500 md:hidden" onClick={toggleSidebar}>
               <IconMenu2 className="w-6 h-6" />
@@ -52,7 +52,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </header>
 
         {/* Content */}
-        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-5 ">
+        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 dark:bg-gray-900 p-5 ">
           {children}
         </main>
       </div>

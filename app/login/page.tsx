@@ -41,7 +41,7 @@ function LoginForm() {
     };
 
     return (
-        <div className='bg-gradient-to-br from-white to-blue-400'>
+        <div className='bg-gradient-to-br from-white to-blue-400 dark:from-gray-900 dark:to-blue-900'>
             <div className="container mx-auto h-screen flex items-center justify-center">
                 <div className='w-full max-w-lg'>
                     <div className="flex justify-center mb-4 ">
@@ -50,33 +50,33 @@ function LoginForm() {
                         </div>
                     </div>
                     <div>
-                        <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
+                        <h2 className="mt-6 text-center text-3xl font-bold text-gray-900 dark:text-white">
                             Masuk ke Akun Anda
                         </h2>
-                        <p className="mt-2 text-center  text-gray-600">
-                            Masuk atau buat <Link href="/register" className="font-medium text-blue-600 hover:text-blue-500">
+                        <p className="mt-2 text-center  text-gray-600 dark:text-gray-400">
+                            Masuk atau buat <Link href="/register" className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300">
                                 akun baru
                             </Link> untuk melanjutkan
                         </p>
                     </div>
                     <form className='mt-5 w-full px-5' onSubmit={handleSubmit}>
-                        <div className="rounded-md p-10 bg-white drop-shadow-xl space-y-4">
+                        <div className="rounded-md p-10 bg-white dark:bg-gray-800 drop-shadow-xl space-y-4">
                             <div>
-                                <label htmlFor="email" className="block  font-medium text-gray-700 mb-1">Email</label>
-                                <input id="email" name="email" type="email" required className="appearance-none rounded-lg relative block w-full px-3 py-3 border placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 border-gray-300" placeholder="Masukkan email Anda" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                <label htmlFor="email" className="block font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                                <input id="email" name="email" type="email" required className="appearance-none rounded-lg relative block w-full px-3 py-3 border placeholder-gray-500 text-gray-900 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Masukkan email Anda" value={email} onChange={(e) => setEmail(e.target.value)} />
                             </div>
                             <div>
-                                <label htmlFor="password" className="block  font-medium text-gray-700 mb-1">Password</label>
-                                <input id="password" name="password" type="password" required className="appearance-none rounded-lg relative block w-full px-3 py-3 border placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 border-gray-300" placeholder="Masukkan password Anda" value={password} onChange={(e) => setPassword(e.target.value)} />
+                                <label htmlFor="password" className="block font-medium text-gray-700 dark:text-gray-300 mb-1">Password</label>
+                                <input id="password" name="password" type="password" required className="appearance-none rounded-lg relative block w-full px-3 py-3 border placeholder-gray-500 text-gray-900 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Masukkan password Anda" value={password} onChange={(e) => setPassword(e.target.value)} />
                             </div>
                             <div className="flex items-center">
-                                <input id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
-                                <label htmlFor="remember-me" className="ml-2 block  text-gray-900x">
+                                <input id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600" />
+                                <label htmlFor="remember-me" className="ml-2 block text-gray-900 dark:text-gray-300">
                                     Ingat saya
                                 </label>
                             </div>
                             <div>
-                                <button type="submit" className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm  font-medium text-white bg-blue-600 hover:bg-blue-950 disabled:bg-blue-300" disabled={loading}>
+                                <button type="submit" className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm font-medium text-white bg-blue-600 hover:bg-blue-950 disabled:bg-blue-300" disabled={loading}>
                                     {loading ? (
                                         <>
                                             <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

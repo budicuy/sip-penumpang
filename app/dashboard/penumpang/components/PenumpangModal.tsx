@@ -35,7 +35,7 @@ const SubmitButton = () => {
 
 const FormField = ({ label, id, error, children }: { label: string, id: string, error?: string[], children: React.ReactNode }) => (
   <div className="mb-4">
-    <label htmlFor={id} className="block text-gray-700 mb-1">{label}</label>
+    <label htmlFor={id} className="block text-gray-700 dark:text-gray-300 mb-1">{label}</label>
     {children}
     {error && <p className="text-red-500 text-sm mt-1">{error[0]}</p>}
   </div>
@@ -55,7 +55,7 @@ export const PenumpangModal = memo(
 
     return (
       <div className="fixed inset-0 bg-gray-600 bg-opacity-50 h-full w-full flex items-start justify-center py-10 px-4 z-50">
-        <div className="bg-white p-8 rounded-lg shadow-xl w-full max-w-2xl overflow-y-auto max-h-full">
+        <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl w-full max-w-2xl overflow-y-auto max-h-full">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-2xl font-semibold">
               {modalType === "add" && "Tambah Penumpang"}
@@ -64,7 +64,7 @@ export const PenumpangModal = memo(
             </h2>
             <button
               onClick={onClose}
-              className="text-gray-500 hover:text-gray-700"
+              className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
             >
               <IconX className="w-6 h-6" />
             </button>

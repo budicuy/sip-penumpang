@@ -31,7 +31,7 @@ const StatCard = ({ title, value, completed, icon: Icon, color, trend }: StatCar
   };
 
   return (
-    <div className="group relative bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
+    <div className="group relative bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
       <div
         className={`absolute inset-0 bg-gradient-to-r ${getColorClasses(
           color,
@@ -39,7 +39,7 @@ const StatCard = ({ title, value, completed, icon: Icon, color, trend }: StatCar
       ></div>
       <div className="relative p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-gray-600 font-medium">{title}</h3>
+          <h3 className="text-gray-600 dark:text-gray-300 font-medium">{title}</h3>
           <div
             className={`p-3 rounded-lg bg-gradient-to-r ${getColorClasses(
               color,
@@ -49,11 +49,11 @@ const StatCard = ({ title, value, completed, icon: Icon, color, trend }: StatCar
           </div>
         </div>
         <div className="space-y-2">
-          <p className="text-3xl font-bold text-gray-800">{value}</p>
+          <p className="text-3xl font-bold text-gray-800 dark:text-white">{value}</p>
           <div className="flex items-center justify-between">
-            <p className="text-sm text-gray-500">{completed}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{completed}</p>
             {trend && (
-              <span className="flex items-center text-xs text-green-600 bg-green-100 px-2 py-1 rounded-full">
+              <span className="flex items-center text-xs text-green-600 bg-green-100 dark:bg-green-900/50 dark:text-green-400 px-2 py-1 rounded-full">
                 <IconTrendingUp className="w-3 h-3 mr-1" />
                 {trend}
               </span>
@@ -154,17 +154,17 @@ export async function LatestPenumpangTable() {
   const { penumpangTerbaru } = await getDashboardStats();
 
   return (
-    <div className="bg-white p-8 rounded-lg shadow">
-      <h2 className="text-xl font-bold mb-4">Data Penumpang Terbaru</h2>
+    <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow">
+      <h2 className="text-xl font-bold mb-4 text-gray-800 dark:text-white">Data Penumpang Terbaru</h2>
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="text-left border-b-2 border-gray-200">
+            <tr className="text-left border-b-2 border-gray-200 dark:border-gray-700">
               {["Nama", "Tujuan", "Tanggal", "Kapal", "Jenis Kendaraan"].map(
                 (header) => (
                   <th
                     key={header}
-                    className="pb-4 text-gray-600 whitespace-nowrap"
+                    className="pb-4 text-gray-600 dark:text-gray-400 whitespace-nowrap"
                   >
                     {header}
                   </th>
@@ -176,26 +176,26 @@ export async function LatestPenumpangTable() {
             {penumpangTerbaru.map((penumpang) => (
               <tr
                 key={penumpang.id}
-                className="border-b border-gray-100 hover:bg-gray-50 transition-colors duration-200"
+                className="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-200"
               >
-                <td className="py-4 font-medium text-gray-800 whitespace-nowrap">
+                <td className="py-4 font-medium text-gray-800 dark:text-gray-200 whitespace-nowrap">
                   {penumpang.nama}
                 </td>
-                <td className="py-4 text-gray-600 whitespace-nowrap">
+                <td className="py-4 text-gray-600 dark:text-gray-400 whitespace-nowrap">
                   {penumpang.tujuan}
                 </td>
-                <td className="py-4 text-gray-600 whitespace-nowrap">
+                <td className="py-4 text-gray-600 dark:text-gray-400 whitespace-nowrap">
                   {new Date(penumpang.tanggal).toLocaleDateString("id-ID", {
                     year: "numeric",
                     month: "long",
                     day: "numeric",
                   })}
                 </td>
-                <td className="py-4 text-gray-600 whitespace-nowrap">
+                <td className="py-4 text-gray-600 dark:text-gray-400 whitespace-nowrap">
                   {penumpang.kapal}
                 </td>
                 <td className="py-4 whitespace-nowrap">
-                  <span className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
+                  <span className="px-3 py-1 bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300 rounded-full text-sm font-medium">
                     {penumpang.jenisKendaraan}
                   </span>
                 </td>
@@ -204,7 +204,7 @@ export async function LatestPenumpangTable() {
           </tbody>
         </table>
         {penumpangTerbaru.length === 0 && (
-          <div className="text-center py-8 text-gray-500">
+          <div className="text-center py-8 text-gray-500 dark:text-gray-400">
             Tidak ada data penumpang tersedia
           </div>
         )}

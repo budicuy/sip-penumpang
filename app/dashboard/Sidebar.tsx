@@ -26,14 +26,14 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }: SidebarProps) 
 
   const linkClass = (path: string) => {
     return `flex items-center p-4 rounded transition-colors ${pathname === path
-      ? 'bg-white text-blue-800'
-      : 'hover:bg-blue-100 hover:text-blue-800'
+      ? 'bg-white text-blue-800 dark:bg-gray-700 dark:text-white'
+      : 'hover:bg-blue-100 hover:text-blue-800 dark:hover:bg-gray-600'
       }`;
   };
 
   return (
     <aside
-      className={`bg-gradient-to-br from-blue-800 to-blue-400 text-white w-64 min-h-screen p-4 transform transition-transform md:translate-x-0 fixed md:relative z-30 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+      className={`bg-gradient-to-br from-blue-800 to-blue-400 dark:from-gray-800 dark:to-gray-700 text-white w-64 min-h-screen p-4 transform transition-transform md:translate-x-0 fixed md:relative z-30 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
     >
       <div className="flex items-center justify-between">
