@@ -4,18 +4,20 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-br from-gray-900 to-blue-900 text-white min-h-screen flex flex-col">
+    <div className="bg-gradient-to-br from-gray-900 to-blue-900 dark:from-gray-800 dark:to-gray-900 text-white dark:text-gray-100 min-h-screen flex flex-col">
       <header className="sticky top-0 z-20 bg-gray-900/50 backdrop-blur-lg">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <h1 className="text-lg md:text-2xl font-bold font-quicksand">SIP-PENUMPANG</h1>
-          <nav className="s`pace-x-4">
-            <Link href="/login" className="px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-700 transition-colors">
-              Login
-            </Link>
-            <Link href="/register" className="bg-blue-600 px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors">
-              Register
-            </Link>
-          </nav>
+          <div className="flex items-center space-x-4">
+            <nav className="space-x-4">
+              <Link href="/login" className="px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-700 transition-colors">
+                Login
+              </Link>
+              <Link href="/register" className="bg-blue-600 px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors">
+                Register
+              </Link>
+            </nav>
+          </div>
         </div>
       </header>
 

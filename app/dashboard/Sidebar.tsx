@@ -36,16 +36,18 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }: SidebarProps) 
       className={`bg-gradient-to-br from-blue-800 to-blue-400 dark:from-gray-800 dark:to-gray-700 text-white w-64 min-h-screen p-4 transform transition-transform md:translate-x-0 fixed md:relative z-30 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
     >
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-bold">{
           // jika role user adalah ADMIN, tampilkan "Admin", jika MANAGER tampilkan "Manager", Jika USER tampilkan "User"
           session?.user?.role === 'USER' ? 'User' :
             session?.user?.role === 'MANAGER' ? 'Manager' :
               session?.user?.role === 'ADMIN' ? 'Admin' : 'Manager'
         }</h1>
-        <button className="md:hidden" onClick={toggleSidebar}>
-          <IconX className="w-6 h-6" />
-        </button>
+        <div className="flex items-center gap-2">
+          <button className="md:hidden" onClick={toggleSidebar}>
+            <IconX className="w-6 h-6" />
+          </button>
+        </div>
       </div>
       <nav className="mt-8">
         <ul>
