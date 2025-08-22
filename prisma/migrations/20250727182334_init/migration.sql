@@ -1,0 +1,61 @@
+-- CreateEnum
+CREATE TYPE "role" AS ENUM ('USER', 'MANAGER', 'ADMIN');
+
+-- CreateEnum
+CREATE TYPE "jenisKelamin" AS ENUM ('L', 'P');
+
+-- CreateEnum
+CREATE TYPE "golongan" AS ENUM ('I', 'II', 'III', 'IVa', 'IVb', 'V', 'VI', 'VII', 'VIII', 'IX');
+
+-- CreateTable
+CREATE TABLE "User" (
+    "id" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "role" "role" NOT NULL,
+    "email" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Penumpang" (
+    "id" SERIAL NOT NULL,
+    "nama" VARCHAR(255) NOT NULL,
+    "usia" SMALLINT NOT NULL,
+    "userId" TEXT,
+    "jenisKelamin" "jenisKelamin" NOT NULL,
+    "tujuan" VARCHAR(255) NOT NULL,
+    "tanggal" DATE NOT NULL,
+    "nopol" VARCHAR(15) NOT NULL,
+    "jenisKendaraan" VARCHAR(255) NOT NULL,
+    "golongan" "golongan" NOT NULL,
+    "kapal" VARCHAR(50) NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Penumpang_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- CreateIndex
+CREATE INDEX "idx_user_email" ON "User"("email");
+
+-- CreateIndex
+CREATE INDEX "idx_user_id" ON "User"("id");
+
+-- CreateIndex
+CREATE INDEX "idx_user_role" ON "User"("role");
+
+-- CreateIndex
+CREATE INDEX "idx_penumpang_nama_tujuan_nopol_kapal_jenisKendaraan" ON "Penumpang"("nama", "tujuan", "nopol", "kapal", "jenisKendaraan");
+
+-- CreateIndex
+CREATE INDEX "idx_penumpang_id" ON "Penumpang"("id");
+
+-- AddForeignKey
+ALTER TABLE "Penumpang" ADD CONSTRAINT "Penumpang_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
